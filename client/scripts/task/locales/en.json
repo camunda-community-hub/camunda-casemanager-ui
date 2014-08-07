@@ -1,0 +1,74 @@
+{
+  "TASK_NAME":
+        "Task name",
+  "SEARCH_BY_TASK_NAME":
+        "Search by task name, case sensitive.",
+  "FOLLOW_UP_DATE":
+        "Follow-up date",
+  "DUE_DATE":
+        "Due date",
+  "ASSIGNEE":
+        "Assignee",
+  "OWNER":
+        "Owner",
+  "DIAGRAM":
+        "Diagram",
+  "FORM":
+        "Form",
+  "HISTORY":
+        "History",
+  "DESCRIPTION":
+        "Description",
+  "SELECT_TASK_IN_LIST":
+        "Select a task in the list.",
+  "CLAIM_TASK":
+        "Claim",
+  "UNCLAIM_TASK":
+        "Unclaim",
+  "DELEGATE_TASK":
+        "Delegate",
+  "SET_FOLLOW_UP_DATE":
+        "Set follow up",
+  "SET_DUE_DATE":
+        "Set due date",
+  "ASSIGNED_TO_YOU":
+        "Assigned to you",
+  "OWNER_IS_YOU":
+        "You are owner",
+
+  "CLAIM_OK":
+        "The task has been claimed.",
+  "CLAIM_ERROR":
+        "An error happend while claiming the task.",
+
+  "UNCLAIM_OK":
+        "The task has been unclaimed.",
+  "UNCLAIM_ERROR":
+        "An error happend while unclaiming the task.",
+
+  "RESOLVE_OK":
+        "The task has been resolved.",
+  "RESOLVE_ERROR":
+        "An error happend while resolving the task.",
+
+  "DELEGATE_ERROR":
+        "An error happend while delegating the task.",
+  "DELEGATE_OK":
+        "The task has been delegated.",
+
+  "ASSIGNEE_ERROR":
+        "An error happend while delegating the task.",
+  "ASSIGNEE_OK":
+        "The task has been delegated.",
+
+  "COMPLETE_ERROR":
+        "An error happend while submitting the task form.",
+  "COMPLETE_OK":
+        "The task is completed.",
+
+  "COMPLETE":
+        "Complete",
+
+  "NONE":
+        "None"
+}

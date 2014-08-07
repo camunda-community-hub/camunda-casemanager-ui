@@ -1,0 +1,10 @@
+{
+  "globals": {
+    "define": false,
+    "require": false
+  },
+  "node": true,
+  "browser": true,
+  "indent": 2,
+  "strict": true
+}

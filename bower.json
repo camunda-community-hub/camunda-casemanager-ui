@@ -1,0 +1,56 @@
+{
+  "private": true,
+  "name": "camunda-casemanager-ui",
+  "version": "7.2.0-SNAPSHOT",
+  "homepage": "https://github.com/camunda/camunda-casemanager-ui",
+  "authors": [
+    "Valentin Vago <valentin.vago@camunda.com>"
+  ],
+  "description": "A web based interface for camunda BPM platform tasks.",
+  "main": "client/index.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "camunda",
+    "bpm",
+    "camunda bpm",
+    "casemanager"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.2.16",
+    "angular-animate": "1.2.16",
+    "angular-bootstrap": "0.11.0",
+    "angular-moment": "0.7.0",
+    "angular-route": "1.2.16",
+    "angular-translate": "~2.2.0",
+    "angular-sanitize": "~1.2.16",
+    "bootstrap": "~3.1.1",
+    "hyperagent": "*",
+    "jquery": "2.1.1",
+    "requirejs-domready": "2.0.1"
+  },
+  "devDependencies": {
+    "jquery-mockjax": "1.5.3",
+    "underscore": "./node_modules/underscore/underscore.js",
+    "underscore.string": "./node_modules/underscore.string/lib/underscore.string.js",
+    "fixturer": "./node_modules/fixturer/index.js",
+    "node-uuid": "1.4.1",
+    "requirejs-json": "~0.0.3",
+    "requirejs-text": "2.0.12"
+  },
+  "resolutions": {
+    "jquery": "2.1.1",
+    "angular": "1.2.16"
+  }
+}

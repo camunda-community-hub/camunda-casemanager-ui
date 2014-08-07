@@ -1,0 +1,18 @@
+{
+  "LOGGED_IN":
+                        "You are now logged in.",
+  "CREDENTIALS_ERROR":
+                        "Can not log in with those credentials.",
+  "USERNAME":
+                        "User name",
+  "PASSWORD":
+                        "Password",
+  "LOGIN":
+                        "Login",
+  "LOGIN_ACTION":
+                        "Login",
+  "LOGGED_OUT":
+                        "You are logged out.",
+  "USER_NAME":
+                        "User name"
+}

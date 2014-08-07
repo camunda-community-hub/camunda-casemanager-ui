@@ -1,0 +1,131 @@
+<!--
+<pagination ng-show="totalItems > pageSize"
+            total-items="totalItems"
+            items-per-page="pageSize"
+            max-size="5"
+            class="pagination-sm"
+            boundary-links="true"
+            ng-model="pageNum"
+            ng-change="pageChange()"
+            next-text="&rsaquo;"
+            last-text="&raquo;"
+            previous-text="&lsaquo;"
+            first-text="&laquo;"></pagination>
+-->
+
+<div class="input-group has-feedback"
+     ng-if="!!totalItems">
+  <input type="text"
+         ng-model="searchTask"
+         placeholder="{{ 'TASK_NAME' | translate }}"
+         tooltip="{{ 'SEARCH_TASK_BY_NAME' | translate }}"
+         tooltip-placement="top"
+         typeahead="filteredTask.name for filteredTask in lookupTask($viewValue)"
+         typeahead-loading="loadingTasks"
+         typeahead-wait-ms="100"
+         typeahead-on-select="selectedTask($item, $model, $label)"
+         class="form-control">
+  <span class="input-group-addon">
+    <i ng-show="loadingTasks"
+       class="glyphicon glyphicon-refresh"></i>
+
+    <i ng-show="!loadingTasks"
+       class="glyphicon glyphicon-search"></i>
+  </span>
+</div>
+
+<div ng-show="loading"
+     class="loader">
+  <i class="animate-spin glyphicon glyphicon-refresh"></i>
+  {{ 'LOADING' | translate }}
+</div>
+
+<div ng-hide="loading">
+  <div ng-hide="totalItems" class="no-match" translate="NO_MATCHING_TASK">
+    No task macthing filters found.
+  </div>
+
+  <form ng-show="totalItems"
+        role="form">
+    <ol class="tasks-list list-unstyled">
+      <li class="task"
+          ng-repeat="(delta, task) in tasks"
+          tabindex="{{ (delta + 1) }}"
+          ng-focus="focus(delta)">
+
+        <div class="names">
+          <h4 class="task"
+              ng-click="focus(delta)">{{ task.name }}</h4>
+          <h6 class="process-definition"
+              ng-class="{suspended: task._embedded.processDefinition}">
+            {{ task._embedded.processDefinition.name || task._embedded.processDefinition.key }}
+          </h6>
+        </div>
+
+        <ul class="list-inline">
+          <li>
+            <input type="checkbox"
+                   name="batch"
+                   ng-model="batch"
+                   ng-change="batchOperationSelect()" />
+          </li>
+          <li data-toggle="tooltip"
+              data-placement="top"
+              title="{{ 'FOLLOW_UP_DATE' | translate }}"
+              class="followup-date"
+              ng-class="(task.followUp < now ? 'overdue' : '')">
+            <span class="glyphicon glyphicon-bell"></span>
+            <span cam-form-inline-field value="task.followUp">
+              <span am-time-ago="task.followUp">{{ task.followUp }}</span>
+            </span>
+          </li>
+          <li data-toggle="tooltip"
+              data-placement="top"
+              title="{{ 'DUE_DATE' | translate }}"
+              class="due-date"
+              ng-class="(task.due < now ? 'overdue' : '')">
+            <span class="glyphicon glyphicon-calendar"></span>
+            <span cam-form-inline-field value="task.due">
+              <span am-time-ago="task.due">{{ task.due }}</span>
+            </span>
+          </li>
+
+          <!--
+          <li data-toggle="tooltip"
+              data-placement="top"
+              title="{{ 'ASSIGNEE' | translate }}"
+              class="assignee">
+            <span class="glyphicon glyphicon-user"></span>
+            <span cam-form-inline-field value="task.assignee">
+              {{ task.assignee }}
+            </span>
+          </li>
+          <li data-toggle="tooltip"
+              data-placement="top"
+              title="{{ 'OWNER' | translate }}"
+              class="owner">
+            <span class="glyphicon glyphicon-certificate"></span>
+            <span cam-form-inline-field value="task.owner">
+              {{ task.owner }}
+            </span>
+          </li>
+          -->
+
+        </ul>
+      </li>
+    </ol>
+  </form>
+</div>
+
+<pagination ng-show="totalItems > pageSize"
+              total-items="totalItems"
+              items-per-page="pageSize"
+              max-size="5"
+              class="pagination-sm"
+              boundary-links="true"
+              ng-model="pageNum"
+              ng-change="pageChange()"
+              next-text="&rsaquo;"
+              last-text="&raquo;"
+              previous-text="&lsaquo;"
+              first-text="&laquo;"></pagination>
