@@ -1,6 +1,48 @@
-{{ test }}
 
-
-<div ui-sortable="sortableOptions" class="apps-container screen floatleft" ng-model="list1">
-      <div class="app" ng-repeat="app in list1">{{$index}} {{app.title}}</div>
+<div class="container-fluid">
+  <div class="row controls">
+    <div class="cols col-sm-3">
+      <div class="inner">
+        Open
+      </div>
     </div>
+    <div class="cols col-sm-3">
+      <div class="inner">
+        Active
+      </div>
+    </div>
+    <div class="cols col-sm-3">
+      <div class="inner">
+        Completed
+      </div>
+    </div>
+    <div class="cols col-sm-3">
+      <div class="inner">
+        Details
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="cols col-sm-3">
+      <div ui-sortable="sortableOptions" class="items-container screen floatleft" ng-model="itemsOpen">
+        <div class="item" ng-repeat="item in itemsOpen">{{item.name}}</div>
+      </div>
+    </div>
+
+    <div class="cols col-sm-3">
+      <div ui-sortable="sortableOptions" class="items-container screen floatleft" ng-model="itemsActive">
+        <div class="item" ng-repeat="item in itemsActive">{{item.name}}</div>
+      </div>
+    </div>
+
+    <div class="cols col-sm-3">
+      <div ui-sortable="sortableOptions" class="items-container screen floatleft" ng-model="itemsCompleted">
+        <div class="item" ng-repeat="item in itemsCompleted">{{item.name}}</div>
+      </div>
+    </div>
+
+    <div class="cols col-sm-3">
+    </div>
+  </div>
+</div>
+

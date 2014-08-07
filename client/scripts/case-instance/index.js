@@ -31,7 +31,20 @@ define([
     $scope
   ) {
 
-    $scope.test = "Hello World";
+    $scope.itemsOpen = [
+      {id: '1', name: "A"},
+      {id: '2', name: "B"},
+      {id: '3', name: "C"},
+      {id: '4', name: "D"}
+    ];
+
+    $scope.itemsActive = [
+      {id: '5', name: "E"}
+    ];
+
+    $scope.itemsCompleted = [
+      {id: '6', name: "F"}
+    ];
 
   }]);
 
