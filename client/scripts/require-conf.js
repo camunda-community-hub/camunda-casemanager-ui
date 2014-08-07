@@ -19,13 +19,15 @@ define(function() {
 
       'moment':                     'bower_components/moment/moment',
       'jquery':                     'bower_components/jquery/dist/jquery',
+      'jquery-ui':                  'bower_components/jquery-ui',
+
       'bootstrap':                  'bower_components/bootstrap/js',
       'angular-bootstrap':          'bower_components/angular-bootstrap/ui-bootstrap-tpls',
       'angular-moment':             'bower_components/angular-moment/angular-moment',
       'angular-translate':          'bower_components/angular-translate/angular-translate',
+      'angular-ui-sortable':        'bower_components/angular-ui-sortable/sortable',
 
-
-      'camunda-casemanager-ui':        'scripts',
+      'camunda-casemanager-ui':     'scripts',
 
 
       'camunda-commons-ui':         'vendor/camunda-commons-ui/lib',
@@ -39,9 +41,10 @@ define(function() {
     shim: {
       'bootstrap':                  ['jquery'],
 
+
       'angular':                    {
                                       exports: 'angular',
-                                      deps: ['jquery']
+                                      deps: ['jquery', 'jquery-ui/ui/sortable']
                                     },
 
       'camunda-bpm-sdk':            ['angular'],
@@ -52,10 +55,18 @@ define(function() {
       'angular-bootstrap':          ['angular'],
       'angular-moment':             ['angular', 'moment'],
 
+      'jquery-ui/ui/widget':        ['jquery-ui/ui/core'],
+      'jquery-ui/ui/mouse':         ['jquery-ui/ui/widget'],
+      'jquery-ui/ui/sortable':      ['jquery-ui/ui/core', 'jquery-ui/ui/widget', 'jquery-ui/ui/mouse'],
+
+      'angular-ui-sortable':        ['angular'],
+
 
       'camunda-casemanager-ui':        [
                                       'angular-route',
                                       'angular-animate',
+
+                                      'angular-ui-sortable',
 
                                       'angular-translate',
 

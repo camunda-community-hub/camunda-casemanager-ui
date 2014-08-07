@@ -19,7 +19,8 @@ define([
 
   var caseInstanceModul = angular.module('cam.casemanager.case.instance', [
     api.name,
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'ui.sortable'
   ]);
 
 

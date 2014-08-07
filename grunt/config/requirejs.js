@@ -15,6 +15,10 @@ module.exports = function() {
 
     'camunda-commons-ui/auth',
     'jquery',
+    'jquery-ui/ui/core',
+    'jquery-ui/ui/widget',
+    'jquery-ui/ui/mouse',
+    'jquery-ui/ui/sortable',
     'angular',
     'moment',
 
@@ -23,7 +27,8 @@ module.exports = function() {
     'angular-bootstrap',
     'angular-route',
     'angular-animate',
-    'angular-moment'
+    'angular-moment',
+    'angular-ui-sortable'
   ];
 
 
