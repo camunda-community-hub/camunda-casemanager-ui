@@ -24,8 +24,7 @@ define([
   var userModule = angular.module('cam.casemanager.user', [
     auth.name,
     api.name,
-    'ui.bootstrap',
-    'cam.form'
+    'ui.bootstrap'
   ]);
 
   /**
