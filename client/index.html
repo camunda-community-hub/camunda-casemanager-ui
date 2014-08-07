@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>camunda Tasklist</title>
+  <title>camunda Casemanager</title>
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <meta name="description" content="camunda Tasklist" />
+  <meta name="description" content="camunda Casemanager" />
   <meta name="author" content="camunda services GmbH" />
 
   <!--< base href="/" /> -->
@@ -31,7 +31,26 @@
 </head>
 
 <body>
-  <div class="page-wrap" ng-view>
+
+  <div class="page-wrap">
+    <!-- # page-navigation -->
+    <nav class="navbar navbar-default"
+         role="navigation"
+         cam-casemanager-navigation>
+    </nav>
+    <!-- / page-navigation -->
+
+
+    <div class="container-fluid">
+      <div class="row controls">
+        <div notifications-panel
+             class="cols notifications-panel page-notifications">
+        </div>
+      </div>
+    </div>
+
+    <div ng-view>
+    </div>
   </div>
 
   <footer class="page">

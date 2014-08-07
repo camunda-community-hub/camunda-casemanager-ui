@@ -113,44 +113,8 @@ define('camunda-casemanager-ui', [
         // using the determinePreferredLanguage()
         // would lead to use something like "en_US"
         .determinePreferredLanguage()
-        .fallbackLanguage('en')
-      ;
+        .fallbackLanguage('en');
 
-      var casemanagerTemplate = require('text!camunda-casemanager-ui/index.html');
-
-      $routeProvider
-        .when('/', {
-          template: casemanagerTemplate,
-          authentication: 'required'
-        })
-
-        // // Would be great to be able to start processes with a URL
-        // .when('/process/:processDefinitionId/start', {
-        //   template: casemanagerTemplate,
-        //   controller: 'processStartCtrl'
-        // })
-        // .when('/process/key/:processDefinitionKey/start', {
-        //   template: casemanagerTemplate,
-        //   controller: 'processStartCtrl'
-        // })
-
-
-        .when('/login', {
-          template: casemanagerTemplate,
-          controller: 'userLoginCtrl'
-        })
-
-
-        .when('/logout', {
-          template: casemanagerTemplate,
-          controller: 'userLogoutCtrl'
-        })
-
-
-        .otherwise({
-          redirectTo: '/'
-        })
-      ;
     }]);
 
     var notificationsPanel = require('camunda-commons-ui/directives/notificationsPanel');

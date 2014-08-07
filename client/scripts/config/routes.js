@@ -1,7 +1,9 @@
 define([
-  'text!camunda-casemanager-ui/index.html'
+  'text!camunda-casemanager-ui/index.html',
+  'text!camunda-casemanager-ui/case-instance/case-instance.html'
 ], function(
-  casemanagerTemplate
+  casemanagerTemplate,
+  caseInstanceTemplate
 ) {
   'use strict';
 
@@ -12,21 +14,6 @@ define([
   ) {
 
     $routeProvider
-      .when('/', {
-        template: casemanagerTemplate,
-        authentication: 'required'
-      })
-
-      // // Would be great to be able to start processes with a URL
-      // .when('/process/:processDefinitionId/start', {
-      //   template: casemanagerTemplate,
-      //   controller: 'processStartCtrl'
-      // })
-      // .when('/process/key/:processDefinitionKey/start', {
-      //   template: casemanagerTemplate,
-      //   controller: 'processStartCtrl'
-      // })
-
 
       .when('/login', {
         template: casemanagerTemplate,
@@ -39,6 +26,11 @@ define([
         controller: 'userLogoutCtrl'
       })
 
+      .when('/case-instance/:caseInstanceId', {
+        template: caseInstanceTemplate,
+        controller: 'caseInstanceCtrl',
+        authentication: 'required'
+      })
 
       .otherwise({
         redirectTo: '/'

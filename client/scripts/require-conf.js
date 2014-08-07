@@ -67,6 +67,7 @@ define(function() {
                                       'camunda-casemanager-ui/config/uris',
 
                                       'camunda-casemanager-ui/api',
+                                      'camunda-casemanager-ui/case-instance',
                                       'camunda-casemanager-ui/user',
 
                                       'bootstrap/collapse',
@@ -96,6 +97,10 @@ define(function() {
       },
       {
         name: 'camunda-casemanager-ui/api',
+        main: 'index'
+      },
+      {
+        name: 'camunda-casemanager-ui/case-instance',
         main: 'index'
       },
       {
