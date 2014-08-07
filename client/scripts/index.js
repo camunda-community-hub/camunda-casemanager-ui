@@ -1,9 +1,9 @@
 'use strict';
 
 
-define('camunda-tasklist-ui', [
-  'camunda-tasklist-ui/require-conf',
-  'camunda-tasklist-ui/utils',
+define('camunda-casemanager-ui', [
+  'camunda-casemanager-ui/require-conf',
+  'camunda-casemanager-ui/utils',
 ], function(
   rjsConf
 ) {
@@ -12,24 +12,24 @@ define('camunda-tasklist-ui', [
    */
 
   /**
-   * @module cam.tasklist
+   * @module cam.casemanager
    */
 
-  var tasklistApp;
+  var casemanagerApp;
 
 
-  var appModules = rjsConf.shim['camunda-tasklist-ui'];
+  var appModules = rjsConf.shim['camunda-casemanager-ui'];
 
 
   var deps = [
     'angular',
-    'text!camunda-tasklist-ui/index.html'
+    'text!camunda-casemanager-ui/index.html'
   ].concat(appModules);
 
 
 
   // converts AMD paths to angular module names
-  // "camunda-tasklist-ui/pile" will be "cam.tasklist.pile"
+  // "camunda-casemanager-ui/pile" will be "cam.casemanager.pile"
   function rj2ngNames(names) {
     var name, translated = [];
     for (var n = 0; n < names.length; n++) {
@@ -50,9 +50,9 @@ define('camunda-tasklist-ui', [
       'ngRoute'
     ]);
 
-    tasklistApp = angular.module('cam.tasklist', ngDeps);
+    casemanagerApp = angular.module('cam.casemanager', ngDeps);
 
-    tasklistApp.config([
+    casemanagerApp.config([
       'UriProvider',
     function(
       UriProvider
@@ -68,23 +68,24 @@ define('camunda-tasklist-ui', [
         return uri;
       }
 
-      UriProvider.replace(':appName', 'tasklist');
+      UriProvider.replace(':appName', 'casemanager');
       UriProvider.replace('app://', getUri('href'));
       UriProvider.replace('adminbase://', getUri('app-root') + '/app/admin/');
       UriProvider.replace('tasklistbase://', getUri('app-root') + '/app/tasklist/');
       UriProvider.replace('cockpitbase://', getUri('app-root') + '/app/cockpit/');
+      UriProvider.replace('casemanagerbase://', getUri('app-root') + '/app/casemanager/');
       UriProvider.replace('admin://', getUri('admin-api'));
       UriProvider.replace('plugin://', getUri('admin-api') + 'plugin/');
       UriProvider.replace('engine://', getUri('engine-api'));
 
       // for forms
-      UriProvider.replace('app:', 'tasklist');
+      UriProvider.replace('app:', 'casemanager');
       UriProvider.replace('embedded:', getUri('app-root'));
 
       UriProvider.replace(':engine', [ '$window', function($window) {
         var uri = $window.location.href;
 
-        var match = uri.match(/\/app\/tasklist\/(\w+)(|\/)/);
+        var match = uri.match(/\/app\/casemanager\/(\w+)(|\/)/);
         if (match) {
           return match[1];
         } else {
@@ -93,7 +94,7 @@ define('camunda-tasklist-ui', [
       }]);
     }]);
 
-    tasklistApp.config([
+    casemanagerApp.config([
       '$routeProvider',
       '$locationProvider',
       '$translateProvider',
@@ -115,33 +116,33 @@ define('camunda-tasklist-ui', [
         .fallbackLanguage('en')
       ;
 
-      var tasklistTemplate = require('text!camunda-tasklist-ui/index.html');
+      var casemanagerTemplate = require('text!camunda-casemanager-ui/index.html');
 
       $routeProvider
         .when('/', {
-          template: tasklistTemplate,
+          template: casemanagerTemplate,
           authentication: 'required'
         })
 
         // // Would be great to be able to start processes with a URL
         // .when('/process/:processDefinitionId/start', {
-        //   template: tasklistTemplate,
+        //   template: casemanagerTemplate,
         //   controller: 'processStartCtrl'
         // })
         // .when('/process/key/:processDefinitionKey/start', {
-        //   template: tasklistTemplate,
+        //   template: casemanagerTemplate,
         //   controller: 'processStartCtrl'
         // })
 
 
         .when('/login', {
-          template: tasklistTemplate,
+          template: casemanagerTemplate,
           controller: 'userLoginCtrl'
         })
 
 
         .when('/logout', {
-          template: tasklistTemplate,
+          template: casemanagerTemplate,
           controller: 'userLogoutCtrl'
         })
 
@@ -153,14 +154,14 @@ define('camunda-tasklist-ui', [
     }]);
 
     var notificationsPanel = require('camunda-commons-ui/directives/notificationsPanel');
-    tasklistApp.directive('notificationsPanel', notificationsPanel);
+    casemanagerApp.directive('notificationsPanel', notificationsPanel);
 
-    tasklistApp.config(require('camunda-tasklist-ui/config/uris'));
-    tasklistApp.config(require('camunda-tasklist-ui/config/translations'));
-    tasklistApp.config(require('camunda-tasklist-ui/config/routes'));
+    casemanagerApp.config(require('camunda-casemanager-ui/config/uris'));
+    casemanagerApp.config(require('camunda-casemanager-ui/config/translations'));
+    casemanagerApp.config(require('camunda-casemanager-ui/config/routes'));
 
     $(document).ready(function() {
-      angular.bootstrap(document, ['cam.tasklist', 'cam.embedded.forms']);
+      angular.bootstrap(document, ['cam.casemanager', 'cam.embedded.forms']);
     });
   }
 

@@ -4,9 +4,9 @@
 define([
   'angular',
   'camunda-commons-ui/auth',
-  'camunda-tasklist-ui/api',
+  'camunda-casemanager-ui/api',
 
-  'text!camunda-tasklist-ui/user/login.html'
+  'text!camunda-casemanager-ui/user/login.html'
 ], function(
   angular,
   auth,
@@ -14,14 +14,14 @@ define([
 ) {
 
   /**
-   * @module cam.tasklist.user
+   * @module cam.casemanager.user
    */
 
   /**
-   * @memberof cam.tasklist
+   * @memberof cam.casemanager
    */
 
-  var userModule = angular.module('cam.tasklist.user', [
+  var userModule = angular.module('cam.casemanager.user', [
     auth.name,
     api.name,
     'ui.bootstrap',
@@ -40,7 +40,7 @@ define([
   ) {
     $modal.open({
       windowClass:  'user-login',
-      template:     require('text!camunda-tasklist-ui/user/login.html')
+      template:     require('text!camunda-casemanager-ui/user/login.html')
     });
   }]);
 

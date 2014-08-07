@@ -2,7 +2,7 @@
   "private": true,
   "name": "camunda-casemanager-ui",
   "version": "7.2.0-SNAPSHOT",
-  "description": "A web based interface for camunda BPM platform tasks.",
+  "description": "A web based interface for camunda BPM platform case.",
   "main": "client/scripts/index.js",
   "repository": {
     "type": "git",
@@ -14,7 +14,6 @@
     "camunda bpm",
     "casemanager"
   ],
-  "author": "Valentin Vago <valentin.vago@camunda.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/camunda/camunda-casemanager-ui/issues"

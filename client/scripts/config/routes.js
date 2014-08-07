@@ -1,7 +1,7 @@
 define([
-  'text!camunda-tasklist-ui/index.html'
+  'text!camunda-casemanager-ui/index.html'
 ], function(
-  tasklistTemplate
+  casemanagerTemplate
 ) {
   'use strict';
 
@@ -13,29 +13,29 @@ define([
 
     $routeProvider
       .when('/', {
-        template: tasklistTemplate,
+        template: casemanagerTemplate,
         authentication: 'required'
       })
 
       // // Would be great to be able to start processes with a URL
       // .when('/process/:processDefinitionId/start', {
-      //   template: tasklistTemplate,
+      //   template: casemanagerTemplate,
       //   controller: 'processStartCtrl'
       // })
       // .when('/process/key/:processDefinitionKey/start', {
-      //   template: tasklistTemplate,
+      //   template: casemanagerTemplate,
       //   controller: 'processStartCtrl'
       // })
 
 
       .when('/login', {
-        template: tasklistTemplate,
+        template: casemanagerTemplate,
         controller: 'userLoginCtrl'
       })
 
 
       .when('/logout', {
-        template: tasklistTemplate,
+        template: casemanagerTemplate,
         controller: 'userLogoutCtrl'
       })
 

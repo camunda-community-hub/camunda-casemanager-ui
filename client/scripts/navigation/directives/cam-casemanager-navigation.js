@@ -1,5 +1,5 @@
 define([
-  'text!./cam-tasklist-navigation.html'
+  'text!./cam-casemanager-navigation.html'
 ], function(
   template
 ) {

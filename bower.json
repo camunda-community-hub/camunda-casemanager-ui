@@ -4,9 +4,10 @@
   "version": "7.2.0-SNAPSHOT",
   "homepage": "https://github.com/camunda/camunda-casemanager-ui",
   "authors": [
-    "Valentin Vago <valentin.vago@camunda.com>"
+    "Daniel Meyer <daniel.meyer@camunda.com>",
+    "Roman Smirnov <roman.smirnov@camunda.com>"
   ],
-  "description": "A web based interface for camunda BPM platform tasks.",
+  "description": "A web based interface for camunda BPM platform case.",
   "main": "client/index.js",
   "moduleType": [
     "amd",

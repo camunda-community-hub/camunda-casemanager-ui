@@ -9,7 +9,7 @@ function(
   CamSDK,
   MockClient
 ) {
-  var apiModule = angular.module('cam.tasklist.client', []);
+  var apiModule = angular.module('cam.casemanager.client', []);
 
   apiModule.value('HttpClient', CamSDK.Client);
 
@@ -62,18 +62,14 @@ function(
       HttpClient: camAPIHttpClient
     };
 
-    if (window.tasklistConf) {
-      for (var c in window.tasklistConf) {
-        conf[c] = window.tasklistConf[c];
+    if (window.casemanagerConf) {
+      for (var c in window.casemanagerConf) {
+        conf[c] = window.casemanagerConf[c];
       }
     }
 
     return new CamSDK.Client(conf);
   }]);
-
-  // apiModule.factory('camForm', ['CamForm', function(CamEmbeddedForm) {
-  //   return
-  // }]);
 
   return apiModule;
 });

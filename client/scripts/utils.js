@@ -5,13 +5,13 @@ define(['angular'], function(angular) {
 
   /**
    * Utilities module
-   * @memberof cam.tasklist
+   * @memberof cam.casemanager
    */
 
   /**
    * @type {angularModule}
    */
-  var utilsModule = angular.module('cam.tasklist.utils', []);
+  var utilsModule = angular.module('cam.casemanager.utils', []);
 
 
   /**
@@ -57,7 +57,7 @@ define(['angular'], function(angular) {
   });
 
   utilsModule.factory('camSettings', function() {
-    var settings = window.tasklistConf || {};
+    var settings = window.casemanagerConf || {};
     return function(ngModule) {
       return settings[ngModule.name ? ngModule.name : ngModule] || {};
     };

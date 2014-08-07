@@ -25,7 +25,7 @@ define(function() {
       'angular-translate':          'bower_components/angular-translate/angular-translate',
 
 
-      'camunda-tasklist-ui':        'scripts',
+      'camunda-casemanager-ui':        'scripts',
 
 
       'camunda-commons-ui':         'vendor/camunda-commons-ui/lib',
@@ -53,7 +53,7 @@ define(function() {
       'angular-moment':             ['angular', 'moment'],
 
 
-      'camunda-tasklist-ui':        [
+      'camunda-casemanager-ui':        [
                                       'angular-route',
                                       'angular-animate',
 
@@ -62,25 +62,19 @@ define(function() {
                                       'camunda-commons-ui/auth',
                                       'camunda-commons-ui/util/notifications',
 
-                                      'camunda-tasklist-ui/config/routes',
-                                      'camunda-tasklist-ui/config/translations',
-                                      'camunda-tasklist-ui/config/uris',
+                                      'camunda-casemanager-ui/config/routes',
+                                      'camunda-casemanager-ui/config/translations',
+                                      'camunda-casemanager-ui/config/uris',
 
-                                      'camunda-tasklist-ui/api',
-                                      'camunda-tasklist-ui/utils',
-                                      'camunda-tasklist-ui/user',
-                                      'camunda-tasklist-ui/controls',
-                                      'camunda-tasklist-ui/form',
-                                      'camunda-tasklist-ui/pile',
-                                      'camunda-tasklist-ui/task',
-                                      'camunda-tasklist-ui/process',
+                                      'camunda-casemanager-ui/api',
+                                      'camunda-casemanager-ui/user',
 
                                       'bootstrap/collapse',
-                                      'camunda-tasklist-ui/navigation/index',
+                                      'camunda-casemanager-ui/navigation/index',
 
                                       'camunda-commons-ui/directives/notificationsPanel',
 
-                                      'text!camunda-tasklist-ui/index.html',
+                                      'text!camunda-casemanager-ui/index.html',
                                       'json!locales/en.json',
                                       'json!locales/de.json',
                                       'json!locales/fr.json'
@@ -97,35 +91,15 @@ define(function() {
         main: 'index'
       },
       {
-        name: 'camunda-tasklist-ui',
+        name: 'camunda-casemanager-ui',
         main: 'index'
       },
       {
-        name: 'camunda-tasklist-ui/api',
+        name: 'camunda-casemanager-ui/api',
         main: 'index'
       },
       {
-        name: 'camunda-tasklist-ui/controls',
-        main: 'index'
-      },
-      {
-        name: 'camunda-tasklist-ui/process',
-        main: 'index'
-      },
-      {
-        name: 'camunda-tasklist-ui/form',
-        main: 'index'
-      },
-      {
-        name: 'camunda-tasklist-ui/pile',
-        main: 'index'
-      },
-      {
-        name: 'camunda-tasklist-ui/task',
-        main: 'index'
-      },
-      {
-        name: 'camunda-tasklist-ui/user',
+        name: 'camunda-casemanager-ui/user',
         main: 'index'
       }
     ]

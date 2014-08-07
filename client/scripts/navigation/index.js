@@ -2,24 +2,22 @@
 
 define([
   'angular',
-  './directives/cam-tasklist-navigation',
-  './directives/cam-sorting-choices',
-  'camunda-tasklist-ui/utils',
+  './directives/cam-casemanager-navigation',
+  'camunda-casemanager-ui/utils',
   'camunda-commons-ui/util/index',
 ], function(
   angular,
-  camTasklistNavigation,
+  camCasemanagerNavigation,
   camSortingChoices
 ) {
-  var navigationModule = angular.module('cam.tasklist.navigation', [
-    require('camunda-tasklist-ui/utils').name,
+  var navigationModule = angular.module('cam.casemanager.navigation', [
+    require('camunda-casemanager-ui/utils').name,
     require('camunda-commons-ui/util/index').name,
     'ui.bootstrap',
-    'cam.tasklist.user'
+    'cam.casemanager.user'
   ]);
 
-  navigationModule.directive('camTasklistNavigation', camTasklistNavigation);
-  navigationModule.directive('camSortingChoices', camSortingChoices);
+  navigationModule.directive('camCasemanagerNavigation', camCasemanagerNavigation);
 
   return navigationModule;
 });
