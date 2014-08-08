@@ -25,4 +25,4 @@ cd ../camunda-bpm-webapp
 git checkout casemanager
 mvn clean jetty:run -Pdevelop-casemanager
 ```
-
+Open browser at http://localhost:8080/camunda/app/casemanager/
