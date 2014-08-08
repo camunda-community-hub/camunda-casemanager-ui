@@ -17,27 +17,33 @@
       </div>
     </div>
     <div class="cols col-sm-3">
-      <div class="inner">
-        Details
-      </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row plan">
     <div class="cols col-sm-3">
-      <div ui-sortable="sortableOptions" class="items-container screen floatleft" ng-model="itemsOpen">
-        <div class="item" ng-repeat="item in itemsOpen">{{item.name}}</div>
+      <div id="open-plan-items" ui-sortable="sortableOptions" class="plan-item-container" ng-model="itemsOpen">
+        <div class="plan-item" ng-repeat="item in itemsOpen">
+          <span class="plan-item-name">{{item.name}}</span>
+          <span class="plan-item-state">{{item.state}}</span>
+        </div>
       </div>
     </div>
 
     <div class="cols col-sm-3">
-      <div ui-sortable="sortableOptions" class="items-container screen floatleft" ng-model="itemsActive">
-        <div class="item" ng-repeat="item in itemsActive">{{item.name}}</div>
+      <div id="active-plan-items" ui-sortable="sortableOptions" class="plan-item-container" ng-model="itemsActive">
+        <div class="plan-item" ng-repeat="item in itemsActive">
+          <span class="plan-item-name">{{item.name}}</span>
+          <span class="plan-item-state">{{item.state}}</span>
+        </div>
       </div>
     </div>
 
     <div class="cols col-sm-3">
-      <div ui-sortable="sortableOptions" class="items-container screen floatleft" ng-model="itemsCompleted">
-        <div class="item" ng-repeat="item in itemsCompleted">{{item.name}}</div>
+      <div id="completed-plan-items" ui-sortable="sortableOptions" class="plan-item-container" ng-model="itemsCompleted">
+        <div class="plan-item" ng-repeat="item in itemsCompleted">
+          <span class="plan-item-name">{{item.name}}</span>
+          <span class="plan-item-state">{{item.state}}</span>
+        </div>
       </div>
     </div>
 
