@@ -64,7 +64,16 @@
 
   <script type="text/javascript">
     // override the following line to include configuration
-    var casemanagerConf = {};
+    var casemanagerConf = {
+      "apiUri": "/camunda/api/engine",
+      "mock": true,
+      "resources": {
+        "case-execution": {
+          "mock": false
+        }
+      }
+    };
+
   </script>
 
   <script type="text/javascript"
