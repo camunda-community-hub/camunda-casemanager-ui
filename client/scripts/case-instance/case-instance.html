@@ -24,7 +24,7 @@
       <div id="open-plan-items" ui-sortable="sortableOptions" class="plan-item-container" ng-model="itemsOpen">
         <div class="plan-item" ng-repeat="item in itemsOpen">
           <span class="plan-item-name">{{item.name}}</span>
-          <span class="plan-item-state">{{item.state}}</span>
+          <a class="plan-item-state" ng-click="toggleEnabled(item)">{{item.state}}</a>
         </div>
       </div>
     </div>

@@ -81,6 +81,10 @@ define([
       update: planItemStateUpdate,
     };
 
+    $scope.toggleEnabled = function(item) {
+      item.state = (item.state=== "enabled") ? "disabled" : "enabled";
+    };
+
   }]);
 
   return caseInstanceModul;
