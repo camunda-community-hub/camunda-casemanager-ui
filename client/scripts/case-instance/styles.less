@@ -1,10 +1,11 @@
 
 .controls {
   .inner {
-    border-bottom: 1px dashed @gray-light;
 
     height: 36px;
     text-align: center;
+    font-size: 120%;
+    font-weight: bold;
   }
 
   h5 {
@@ -29,12 +30,11 @@
 .plan {
 
   .plan-item {
-    border-bottom: 1px solid @gray-light;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 5px;
+    border: 1px solid @gray-light;
+    padding: 10px;
     height:50px;
     margin-left: 5px;
+    margin-top: 5px;
     margin-right: 5px;
 
     &-placeholder {
@@ -46,17 +46,18 @@
     }
 
     &-name {
-      font-weight: bold;
     }
 
     &-state {
       float:right;
+      font-size: 90%;
     }
 
   }
 
   .plan-item-container {
     min-height: 50px;
+    margin-top: 20px;
   }
 
   .ui-sortable {

@@ -23,7 +23,7 @@
     <div class="cols col-sm-3">
       <div id="open-plan-items" ui-sortable="sortableOptions" class="plan-item-container" ng-model="itemsOpen">
         <div class="plan-item" ng-repeat="item in itemsOpen">
-          <span class="plan-item-name">{{item.name}}</span>
+          <span class="plan-item-name">{{item.activityName}}</span>
           <a class="plan-item-state" ng-click="toggleEnabled(item)">{{item.state}}</a>
         </div>
       </div>
@@ -32,7 +32,7 @@
     <div class="cols col-sm-3">
       <div id="active-plan-items" ui-sortable="sortableOptions" class="plan-item-container" ng-model="itemsActive">
         <div class="plan-item" ng-repeat="item in itemsActive">
-          <span class="plan-item-name">{{item.name}}</span>
+          <span class="plan-item-name">{{item.activityName}}</span>
           <span class="plan-item-state">{{item.state}}</span>
         </div>
       </div>
@@ -41,7 +41,7 @@
     <div class="cols col-sm-3">
       <div id="completed-plan-items" ui-sortable="sortableOptions" class="plan-item-container" ng-model="itemsCompleted">
         <div class="plan-item" ng-repeat="item in itemsCompleted">
-          <span class="plan-item-name">{{item.name}}</span>
+          <span class="plan-item-name">{{item.activityName}}</span>
           <span class="plan-item-state">{{item.state}}</span>
         </div>
       </div>

@@ -3,7 +3,7 @@
 
 define([
   'angular',
-  'camunda-casemanager-ui/api',
+  'camunda-casemanager-ui/api'
 ], function(
   angular,
   api
@@ -34,25 +34,48 @@ define([
 
   caseInstanceModul.controller('caseInstanceCtrl', [
     '$scope',
+    'camAPI',
 
   function (
-    $scope
+    $scope,
+    camAPI
   ) {
 
-    $scope.itemsOpen = [
-      {id: '1', name: "Schufa Prüfung", state: "enabled"},
-      {id: '2', name: "B", state: "disabled"},
-      {id: '3', name: "C", state: "enabled"},
-      {id: '4', name: "D", state: "enabled"}
-    ];
+    var caseExecutionResource = camAPI.resource('case-execution');
 
-    $scope.itemsActive = [
-      {id: '5', name: "E", state: "active"}
-    ];
+    $scope.itemsOpen = [];
 
-    $scope.itemsCompleted = [
-      {id: '6', name: "F", state: "completed"}
-    ];
+    $scope.itemsActive = [];
+
+    $scope.itemsCompleted = [];
+
+    function reload() {
+      $scope.itemsOpen = [];
+
+      $scope.itemsActive = [];
+
+      $scope.itemsCompleted = [];
+
+      caseExecutionResource.list({}, function(err, result) {
+        angular.forEach(result, function(execution) {
+          if(execution.id !== execution.caseInstanceId) {
+            if(execution.enabled) {
+              execution.state = "enabled";
+              $scope.itemsOpen.push(execution);
+
+            } else if(execution.disabled) {
+              execution.state = "disabled";
+              $scope.itemsOpen.push(execution);
+
+            } else if(execution.active) {
+              execution.state = "active";
+              $scope.itemsActive.push(execution);
+
+            }
+          }
+        });
+      });
+    }
 
     function planItemStateUpdate(event, ui) {
       var planItem;
@@ -61,14 +84,34 @@ define([
         if(CMMN_LIFE_CYCLE[planItem.state].indexOf("active") == -1) {
           ui.item.sortable.cancel();
         } else {
-          planItem.state = "active";
+          caseExecutionResource.manualStart(planItem.id, {}, function(err, done) {
+            if(err) {
+              console.log(err);
+            } else {
+              planItem.state = "active";
+              reload();
+            }
+          });
+
         }
       } else if (event.target.id !== 'completed-plan-items' && ui.item.sortable.droptarget.attr('id') === 'completed-plan-items') {
         planItem = ui.item.scope().item;
         if(CMMN_LIFE_CYCLE[planItem.state].indexOf("completed") == -1) {
           ui.item.sortable.cancel();
         } else {
-          planItem.state = "completed";
+          caseExecutionResource.complete(planItem.id, {}, function(err, done) {
+            if(err) {
+              var idx = $scope.itemsCompleted.indexOf(planItem);
+              if(idx > -1) {
+                $scope.itemsCompleted.splice(idx, 1);
+                $scope.itemsActive.push(planItem);
+              }
+              console.log(err);
+            } else {
+              planItem.state = "completed";
+              reload();
+            }
+          });
         }
       } else if (event.target.id !== 'open-plan-items' && ui.item.sortable.droptarget.attr('id') === 'open-plan-items') {
         ui.item.sortable.cancel();
@@ -79,11 +122,36 @@ define([
       placeholder: "plan-item-placeholder",
       connectWith: ".plan-item-container",
       update: planItemStateUpdate,
+      opacity: 0.8,
+      sort: function(e, ui) {
+        ui.item.sortable.cancel();
+      }
     };
 
     $scope.toggleEnabled = function(item) {
-      item.state = (item.state=== "enabled") ? "disabled" : "enabled";
+      if(item.state === "enabled") {
+        caseExecutionResource.disable(item.id, {}, function(err, done) {
+          if(err) {
+            console.log(err);
+          } else {
+            item.state = "disabled";
+            reload();
+          }
+        });
+      } else {
+        caseExecutionResource.reenable(item.id, {}, function(err, done) {
+          if(err) {
+            console.log(err);
+          } else {
+            item.state = "enabled";
+            reload();
+          }
+        });
+      }
     };
+
+    // initially, load list
+    reload();
 
   }]);
 
