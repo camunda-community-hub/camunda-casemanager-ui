@@ -25,6 +25,7 @@
         <div class="plan-item" ng-repeat="item in itemsOpen">
           <span class="plan-item-name">{{item.activityName}}</span>
           <a class="plan-item-state" ng-click="toggleEnabled(item)">{{item.state}}</a>
+          <span class="plan-item-parent" ng-show="hasParent(item)">Parent: {{parentName(item) }}</span>
         </div>
       </div>
     </div>
@@ -34,6 +35,7 @@
         <div class="plan-item" ng-repeat="item in itemsActive">
           <span class="plan-item-name">{{item.activityName}}</span>
           <span class="plan-item-state">{{item.state}}</span>
+          <span class="plan-item-parent" ng-show="hasParent(item)">Parent: {{parentName(item) }}</span>
         </div>
       </div>
     </div>
@@ -43,6 +45,7 @@
         <div class="plan-item" ng-repeat="item in itemsCompleted">
           <span class="plan-item-name">{{item.activityName}}</span>
           <span class="plan-item-state">{{item.state}}</span>
+          <span class="plan-item-parent" ng-show="hasParent(item)">Parent: {{parentName(item) }}</span>
         </div>
       </div>
     </div>

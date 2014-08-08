@@ -49,6 +49,8 @@ define([
 
     $scope.itemsCompleted = [];
 
+    var executionsById = {};
+
     function reload() {
       $scope.itemsOpen = [];
 
@@ -56,9 +58,14 @@ define([
 
       $scope.itemsCompleted = [];
 
+      executionsById = {};
+
       caseExecutionResource.list({}, function(err, result) {
         angular.forEach(result, function(execution) {
           if(execution.id !== execution.caseInstanceId) {
+
+            executionsById[execution.id] = execution;
+
             if(execution.enabled) {
               execution.state = "enabled";
               $scope.itemsOpen.push(execution);
@@ -148,6 +155,19 @@ define([
           }
         });
       }
+    };
+
+    $scope.parentName = function(item) {
+      var parent = executionsById[item.parentId];
+      if(!!parent) {
+        return parent.activityName;
+      } else {
+        return "none";
+      }
+    };
+
+    $scope.hasParent = function(item) {
+      return !!executionsById[item.parentId];
     };
 
     // initially, load list
