@@ -17,12 +17,14 @@ define([
 
   ngModule.controller('overviewCtrl', [
     '$scope',
-    '$timeout',
+    'Notifications',
+    'Uri',
     'camAPI',
 
   function (
     $scope,
-    $timeout,
+    Notifications,
+    Uri,
     camAPI
   ) {
 
@@ -65,6 +67,45 @@ define([
       caseInstanceResource.close(inst.id, {}, function(err, result) {
         loadCaseInstances();
       });
+    };
+
+
+    function uploadProgress(evt) {
+      $scope.$apply(function(){
+        if (evt.lengthComputable) {
+          $scope.progress = Math.round(evt.loaded * 100 / evt.total);
+        }
+      });
+    }
+
+    function uploadComplete() {
+      $scope.$apply(function(){
+        Notifications.addMessage({'status': 'Success', 'message': 'File upload successfull.'});
+        loadCaseDefinitions();
+      });
+    }
+
+    function uploadFailed() {
+      $scope.$apply(function(){
+        Notifications.addError({'status': 'Failed', 'message': 'File upload failed.', 'exclusive': ['type']});
+      });
+    }
+
+    $scope.setFile = function(element) {
+      $scope.file = element.files[0];
+
+      // perform HTML 5 file opload (not supported by IE 9)
+      var fd = new FormData();
+      fd.append('data', $scope.file);
+      fd.append('deployment-name', "ui-deployment");
+      var xhr = new XMLHttpRequest();
+      xhr.upload.addEventListener('progress', uploadProgress, false);
+      xhr.addEventListener('load', uploadComplete, false);
+      xhr.addEventListener('error', uploadFailed, false);
+      xhr.addEventListener('abort', uploadFailed, false);
+      xhr.open('POST', Uri.appUri('engine://engine/:engine/deployment/create'));
+      xhr.send(fd);
+
     };
 
     // init

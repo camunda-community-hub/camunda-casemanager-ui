@@ -7,6 +7,18 @@
     <h2>Case Definitions</h2>
   </div>
 
+  <div class="row well">
+    Deploy:
+
+    <input
+        name="data" type="file"
+        size="50"
+        maxlength="100000"
+        accept="*/*"
+        onchange="angular.element(this).scope().setFile(this)" />
+
+  </div>
+
   <div class="row">
 
     <table class="table">
