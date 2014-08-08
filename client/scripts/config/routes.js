@@ -1,8 +1,10 @@
 define([
   'text!camunda-casemanager-ui/index.html',
+  'text!camunda-casemanager-ui/overview/overview.html',
   'text!camunda-casemanager-ui/case-instance/case-instance.html'
 ], function(
   casemanagerTemplate,
+  overviewTemplate,
   caseInstanceTemplate
 ) {
   'use strict';
@@ -26,6 +28,12 @@ define([
         controller: 'userLogoutCtrl'
       })
 
+      .when('/overview', {
+        template: overviewTemplate,
+        controller: 'overviewCtrl',
+        authentication: 'required'
+      })
+
       .when('/case-instance/:caseInstanceId', {
         template: caseInstanceTemplate,
         controller: 'caseInstanceCtrl',
@@ -33,7 +41,7 @@ define([
       })
 
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/overview'
       })
     ;
   }];

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row">
+    <h1>Overview</h1>
+  </div>
+
+  <div class="row">
+    <h2>Case Definitions</h2>
+  </div>
+
+  <div class="row">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Version</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="def in caseDefinitions">
+        <td>{{def.name}}</td>
+        <td>{{def.version}}</td>
+        <td><button ng-click="createCaseInstance(def)">Create</button></td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="row">
+    <h2>Case Instances</h2>
+  </div>
+
+
+  <div class="row">
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Definition Name</th>
+          <th>Active</th>
+          <th>Completed</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="inst in caseInstances">
+        <td><a href="#/case-instance/{{inst.id}}">{{inst.id}}</a></td>
+        <td>{{definitionName(inst.caseDefinitionId)}}</td>
+        <td>{{inst.active}}</td>
+        <td>{{inst.completed}}</td>
+        <td>
+          <button ng-show="inst.completed" ng-click="closeCaseInstance(inst)">Close</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+</div>

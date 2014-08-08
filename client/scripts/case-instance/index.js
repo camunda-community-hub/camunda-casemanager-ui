@@ -34,12 +34,16 @@ define([
 
   caseInstanceModul.controller('caseInstanceCtrl', [
     '$scope',
+    '$routeParams',
     'camAPI',
 
   function (
     $scope,
+    $routeParams,
     camAPI
   ) {
+
+    var caseInstanceId = $routeParams.caseInstanceId;
 
     var caseExecutionResource = camAPI.resource('case-execution');
 
@@ -60,7 +64,7 @@ define([
 
       executionsById = {};
 
-      caseExecutionResource.list({}, function(err, result) {
+      caseExecutionResource.list({caseInstanceId: caseInstanceId}, function(err, result) {
         angular.forEach(result, function(execution) {
           if(execution.id !== execution.caseInstanceId) {
 
@@ -130,6 +134,7 @@ define([
       connectWith: ".plan-item-container",
       update: planItemStateUpdate,
       opacity: 0.8,
+      tolerance: "intersect",
       sort: function(e, ui) {
         ui.item.sortable.cancel();
       }
