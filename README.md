@@ -26,3 +26,9 @@ git checkout casemanager
 mvn clean jetty:run -Pdevelop-casemanager
 ```
 Open browser at http://localhost:8080/camunda/app/casemanager/
+
+![Casemanager - Overview][1]
+![Casemanager - Case Instance Details][2]
+
+[1]: casemanager-overview.png
+[2]: casemanager-caseinstance.png
