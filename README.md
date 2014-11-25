@@ -11,13 +11,19 @@ git clone git@github.com:camunda/camunda-bpm-webapp.git
 cd camunda-casemanager-ui
 npm install
 bower install
-grund auto-build
+grunt auto-build
 
 # in a different terminal
 cd ../camunda-bpm-webapp/webapp
 git checkout casemanager
 mvn clean jetty:run -Pdevelop-casemanager
 ```
+
+#### Troubleshooting
+
+If you are on Windows and `npm install` fails, you may try `npm install --no-bin-links`.
+
+#### Usage
 
 Open browser at http://localhost:8080/camunda/app/casemanager/ and login with user `jonny1` and password `jonny1`.
 
