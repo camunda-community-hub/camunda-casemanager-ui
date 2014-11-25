@@ -25,6 +25,7 @@ module.exports = function() {
     'camunda-bpm-sdk',
 
     'angular-bootstrap',
+    'bootstrap/collapse',
     'angular-route',
     'angular-animate',
     'angular-moment',

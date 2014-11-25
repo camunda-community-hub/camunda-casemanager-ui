@@ -3,7 +3,6 @@
 
 module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
-  require('time-grunt')(grunt);
 
   var pkg = require('./package.json');
 
@@ -22,16 +21,6 @@ module.exports = function(grunt) {
 
     pkg:              pkg,
 
-    bower:            require('camunda-commons-ui/grunt/config/bower')(config),
-
-    jasmine_node:     require('camunda-commons-ui/grunt/config/jasmine_node')(config),
-
-    karma:            require('camunda-commons-ui/grunt/config/karma')(config),
-
-    protractor:       require('camunda-commons-ui/grunt/config/protractor')(config),
-
-    seleniuminstall:  require('camunda-commons-ui/grunt/config/seleniuminstall')(config),
-
     requirejs:        require('./grunt/config/requirejs')(config),
 
     less:             require('camunda-commons-ui/grunt/config/less')(config),
@@ -40,17 +29,11 @@ module.exports = function(grunt) {
 
     watch:            require('./grunt/config/watch')(config),
 
-    connect:          require('camunda-commons-ui/grunt/config/connect')(config),
-
-    jsdoc:            require('camunda-commons-ui/grunt/config/jsdoc')(config),
-
     jshint:           require('camunda-commons-ui/grunt/config/jshint')(config),
-
-    changelog:        require('camunda-commons-ui/grunt/config/changelog')(config),
 
     localescompile:   require('camunda-commons-ui/grunt/config/localescompile')(config),
 
-    clean:            require('camunda-commons-ui/grunt/config/clean')(config)
+    clean:            require('./grunt/config/clean')(config)
   });
 
   require('camunda-commons-ui/grunt/tasks/localescompile')(grunt);
@@ -71,8 +54,6 @@ module.exports = function(grunt) {
     var tasks = [
       'clean',
       'jshint',
-      'jsdoc',
-      'bower',
       'copy',
       'less',
       'localescompile',
@@ -85,14 +66,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('auto-build', [
     'build:dev',
-    'connect',
     'watch'
   ]);
-
-
-  grunt.registerTask('postinstall', ['seleniuminstall']);
-
-  grunt.registerTask('prepublish', ['build', 'changelog']);
 
   grunt.registerTask('default', ['build']);
 };

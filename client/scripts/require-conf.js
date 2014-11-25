@@ -33,8 +33,7 @@ define(function() {
       'camunda-commons-ui':         'vendor/camunda-commons-ui/lib',
 
 
-      'camunda-bpm-sdk':            'vendor/camunda-bpm-sdk-angular',
-      'camunda-bpm-sdk-mock':       'vendor/camunda-bpm-sdk-mock',
+      'camunda-bpm-sdk':            'bower_components/camunda-bpm-sdk-js/camunda-bpm-sdk-angular',
 
     },
 

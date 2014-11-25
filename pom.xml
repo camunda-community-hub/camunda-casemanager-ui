@@ -9,7 +9,7 @@
   <parent>
     <groupId>org.camunda</groupId>
     <artifactId>camunda-release-parent</artifactId>
-    <version>1</version>
+    <version>2.5</version>
     <!-- do not remove empty tag - http://jira.codehaus.org/browse/MNG-4687 -->
     <relativePath />
   </parent>
@@ -47,12 +47,6 @@
                       <arg value="/c" />
                       <arg value="node_modules\.bin\bower.cmd" />
                       <arg value="install" />
-                    </exec>
-                    <exec executable="cmd" failonerror="true">
-                      <arg value="/c" />
-                      <arg value="node_modules\.bin\grunt.cmd" />
-                      <arg value="jasmine_node" />
-                      <arg value="--color=false" />
                     </exec>
                     <exec executable="cmd" failonerror="true">
                       <arg value="/c" />
@@ -97,10 +91,6 @@
                     </exec>
                     <exec executable="./node_modules/bower/bin/bower" failonerror="true">
                       <arg value="install" />
-                    </exec>
-                    <exec executable="./node_modules/grunt-cli/bin/grunt" failonerror="true">
-                      <arg value="jasmine_node" />
-                      <arg value="--color=false" />
                     </exec>
                     <exec executable="./node_modules/grunt-cli/bin/grunt" failonerror="true">
                       <arg value="build:prod" />

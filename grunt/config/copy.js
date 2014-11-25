@@ -1,19 +1,21 @@
 module.exports = function(config) {
   'use strict';
   var grunt = config.grunt;
-  var productionRemoveExp = /<!-- #production-remove.*\/production-remove -->/igm;
-  var prod = grunt.option('target') === 'dist';
+  var productionRemoveExp = /<!-- #production-remove([\s\S.]*)\/production-remove -->/igm;
+  function prod () {
+    return grunt.config('buildTarget') === 'dist';
+  };
 
 
   function productionRemove(content) {
-    if (!prod) { return content; }
+    if (!prod()) { return content; }
     grunt.log.writeln('Removing development snippets');
     return content.replace(productionRemoveExp, '');
   }
 
 
   function livereloadPort(content, srcpath) {
-    if (srcpath.slice(-4) !== 'html' || prod) {
+    if (srcpath.slice(-4) !== 'html' || prod()) {
       return content;
     }
 
@@ -27,17 +29,10 @@ module.exports = function(config) {
 
     var casemanagerConf = 'var casemanagerConf = '+ JSON.stringify({
       apiUri: '/camunda/api/engine',
-      mock: true,
+      mock: false,
 
       // overrides the settings above
       resources: {
-        'process-definition': {
-          mock: false
-        },
-
-        'task': {
-          mock: false
-        }
       }
     }, null, 2) +';';
 
@@ -100,35 +95,23 @@ module.exports = function(config) {
           cwd: '<%= pkg.gruntConfig.clientDir %>/images',
           src: ['**'],
           dest: '<%= buildTarget %>/images/'
+        },
+        {
+          expand: true,
+          cwd: '<%= pkg.gruntConfig.clientDir %>/styles',
+          src: ['*.css'],
+          dest: '<%= buildTarget %>/styles/'
         }
       ]
     },
 
-    sdk: {
+    config: {
       files: [
         {
           expand: true,
-          cwd: 'node_modules/camunda-commons-ui',
-          src: [
-            'lib/**/*.js',
-            'lib/*.js',
-            // 'resources/locales/**/*.json',
-            // 'resources/locales/*.json'
-          ],
-          dest: '<%= buildTarget %>/vendor/camunda-commons-ui'
-        },
-        {
-          expand: true,
-          cwd: 'node_modules/camunda-bpm-sdk-js/dist',
-          src: ['**/*.js'],
-          dest: '<%= pkg.gruntConfig.clientDir %>/vendor/'
-        // },
-        // {
-        //   expand: true,
-        //   cwd: 'node_modules/camunda-bpm-sdk-js/dist',
-        //   src: ['**/*.js'],
-        //   // dest: '<%= pkg.gruntConfig.clientDir %>/vendor/'
-        //   dest: '<%= buildTarget %>/vendor/'
+          cwd: '<%= pkg.gruntConfig.clientDir %>/scripts/config',
+          src: ['config.js'],
+          dest: '<%= buildTarget %>/scripts/'
         }
       ]
     }

@@ -18,9 +18,8 @@ module.exports = function(config) {
 
     styles: {
       files: [
-        // 'node_modules/camunda-commons-ui/grunt/config/less.js',
         '<%= pkg.gruntConfig.clientDir %>/styles/**/*.{css,less}',
-        '<%= pkg.gruntConfig.clientDir %>/scripts/*/*.{css,less}'
+        '<%= pkg.gruntConfig.clientDir %>/scripts/**/*.{css,less}'
       ],
       tasks: [
         'less'
@@ -38,49 +37,25 @@ module.exports = function(config) {
       ]
     },
 
+    config: {
+      files: [
+        '<%= pkg.gruntConfig.clientDir %>/scripts/config/config.js'
+      ],
+      tasks: [
+        'copy:config'
+      ]
+    },
+
     sdk: {
       files: [
-        // 'grunt/config/require.js',
         'node_modules/camunda-commons-ui/lib/**/*.js',
         'node_modules/camunda-commons-ui/{resources,lib/*}/locales/**/*.json',
         'node_modules/camunda-bpm-sdk-js/dist/**/*.js'
       ],
       tasks: [
-        'copy:sdk',
         'localescompile',
         'requirejs:scripts',
         'requirejs:dependencies'
-      ]
-    },
-
-    unitTest: {
-      files: [
-        // 'grunt/config/jasmine_node.js',
-        'test/unit/**/*Spec.js'
-      ],
-      tasks: [
-        'jasmine_node:unit'
-      ]
-    },
-
-    integrationTest: {
-      files: [
-        // 'grunt/config/karma.js',
-        'test/integration/main.js',
-        'test/integration/**/*Spec.js'
-      ],
-      tasks: [
-        'karma:integration'
-      ]
-    },
-
-    e2eTest: {
-      files: [
-        // 'grunt/config/protractor.js',
-        'test/e2e/**/*Spec.js'
-      ],
-      tasks: [
-        'protractor:e2e'
       ]
     },
 
